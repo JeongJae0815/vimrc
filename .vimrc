@@ -111,12 +111,12 @@ colorscheme jellybeans
 
 " vim-lsp (using clangd)
 " linux for clangd-9
-if executable('clangd')
+if executable('clangd-10')
     augroup lsp_clangd
         autocmd!
         autocmd User lsp_setup call lsp#register_server({
                     \ 'name': 'clangd',
-                    \ 'cmd': {server_info->['clangd']},
+                    \ 'cmd': {server_info->['clangd-10']},
                     \ 'whitelist': ['c', 'cpp','cxx','objc', 'objcpp','h','hxx'],
                     \ })
     augroup end
@@ -140,11 +140,8 @@ let g:lsp_diagnostics_enabled = 1         " enable diagnostics support
 let g:lsp_signs_enabled = 1         " enable signs
 let g:lsp_diagnostics_echo_cursor = 1 " enable echo under cursor when in normal mode
 
-    "vim lsp debugging
-    let g:lsp_log_verbose = 1
-    let g:lsp_log_file = expand('~/vim-lsp.log')
-    let g:asyncomplete_log_file = expand('~/asyncomplete.log') "for asyncomplete.vim log
-
+highlight link LspErrorText GruvboxRedSign " requires gruvbox
+highlight clear LspWarningLine
 
 "vim-cpp-enhanced-highlight
 let g:cpp_class_scope_highlight = 1
